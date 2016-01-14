@@ -13,7 +13,6 @@ $fm =  new FileMaker('PayPal_IPN', FM_HOST, FM_USER, FM_PASS);
 $req = 'cmd=_notify-validate';   
   
 // Store each $_POST value in a NVP string: 1 string encoded and 1 string decoded   
-$ipn_email = '';  
 $ipn_data_array = array();
 foreach ($_POST as $key => $value)   
 {   
@@ -23,9 +22,6 @@ foreach ($_POST as $key => $value)
  $ipn_data_array[$key] = urldecode($value);
 }
 
-// Store IPN data serialized for RAW data storage later
-$ipn_serialized = serialize($ipn_data_array);
-  
 // Validate IPN with PayPal
 require_once('validate.php');
 

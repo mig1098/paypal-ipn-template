@@ -1,0 +1,63 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "e7675e63d3f4dcbb8978410a9b699071",
+    "content-hash": "c0c3f41d99adbc29e4a81ce8390e6955",
+    "packages": [
+        {
+            "name": "matatirosoln/filemaker-api",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/matatirosolutions/filemakerapi.git",
+                "reference": "b9c5c0aa2c80296fd3d3393f5962a8d6045b9baf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/matatirosolutions/filemakerapi/zipball/b9c5c0aa2c80296fd3d3393f5962a8d6045b9baf",
+                "reference": "b9c5c0aa2c80296fd3d3393f5962a8d6045b9baf",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "FileMaker.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "FileMaker Inc",
+                    "email": "filemaker@filemaker.com",
+                    "homepage": "http://filemaker.com"
+                }
+            ],
+            "description": "FileMaker PHP API",
+            "keywords": [
+                "FileMaker",
+                "PHP API",
+                "cwp"
+            ],
+            "time": "2015-03-16 23:13:50"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "matatirosoln/filemaker-api": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

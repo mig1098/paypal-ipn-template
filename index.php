@@ -1,53 +1,13 @@
-<?php 
-////////////////////////////////////////////////////////////   
-// Angell EYE : PayPal IPN Template : 02.01.2009 //////////  
-//////////////// angelleye.com  ////////////////////// 
-/////////////////////////////////////////////////////////
+<?php
+/**
+ * Angell EYE - PayPal IPN for FileMaker
+ */
 
-require_once('admin/config.php');
+require_once('includes/config.php');
 
-if($php_version == '5')
-{
-	require_once('includes/phpmailer/class.phpmailer.php');
-	require_once('includes/phpmailer/class.smtp.php');
-}
-else
-{
-	require_once('includes/phpmailer/php_4/class.phpmailer.php');
-	require_once('includes/phpmailer/php_4/class.smtp.php');
-}
-
-require_once('includes/database.class.php');
-require_once('includes/functions.php');
-
-// Configure SMTP email settings
-$mail = new PHPMailer();
-if($smtp_auth)
-{
-	$mail -> IsSMTP();
-	$mail -> Host = $smtp_host;	
-	$mail -> SMTPAuth = $smtp_auth;   					
-	$mail -> Username = $smtp_username;  				
-	$mail -> Password = $smtp_password;
-}
-else
-{
-	if($sandbox)
-	{
-		$mail -> IsSMTP();
-		$mail -> Host = $smtp_host;
-	}
-	else
-		$mail -> IsMail();	
-}
-
-$mail -> IsHTML(true);		 										
-$mail -> From = $email_from_address;				
-$mail -> FromName = $email_from_name;					
-
-// Configure new database object
-$db = new Database($db_host, $db_username, $db_password, $db_database, $db_table_prefix);
-$db -> connect();
+// Connect to FileMaker
+require_once('vendor/matatirosoln/filemaker-api/FileMaker.php');
+$fm =  new FileMaker('PayPal_IPN', FM_HOST, FM_USER, FM_PASS);
   
 // Read the post from PayPal system and add 'cmd'   
 $req = 'cmd=_notify-validate';   

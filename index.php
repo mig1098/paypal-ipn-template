@@ -18,29 +18,12 @@ foreach ($_POST as $key => $value)
 {   
  $value = urlencode(stripslashes($value));   
  $req .= "&" . $key . "=" . $value;   
- $ipn_email .= $key . " = " . urldecode($value) . '<br />';  
  $ipn_data_array[$key] = urldecode($value);
 }
 
 // Validate IPN with PayPal
 require_once('validate.php');
 
-// If there was a problem connecting to the database email site admin with the mysql error info and the raw IPN data.  Then exit.
-$error_email_body = '';
-if(count($db -> errors) > 0)
-{	
-	foreach($db -> errors as $error) 
-		$error_email_body .= $error . '<br />';
-		
-	$mail -> Subject  =  'PayPal IPN : Connection to database failed!';
-	$mail -> Body =  $error_email_body . '<br /><br />' . $ipn_email;
-	$mail -> AddAddress($admin_email_address, $admin_name);
-	$mail -> Send();
-	$mail -> ClearAddresses();
-	
-	exit();
-}
-  
 // Load IPN data into PHP variables
 require_once('parse-ipn-data.php');
 
